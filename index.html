@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dwarrek Designs - Interior Design Studio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Dwarrek Designs - Modern Interior Design Studio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -13,25 +13,32 @@
             box-sizing: border-box;
         }
 
+        :root {
+            --brown-900: #1a0f0b;
+            --brown-800: #2d1b14;
+            --brown-700: #4a3628;
+            --brown-600: #6b4e3d;
+            --brown-500: #8d6e52;
+            --brown-400: #b08d6f;
+            --brown-300: #d2b48c;
+            --brown-200: #e8d5b7;
+            --brown-100: #f5ebe0;
+            --white: #ffffff;
+            --shadow-light: 0 10px 30px rgba(26, 15, 11, 0.1);
+            --shadow-medium: 0 20px 60px rgba(26, 15, 11, 0.15);
+            --shadow-heavy: 0 30px 100px rgba(26, 15, 11, 0.2);
+        }
+
         body {
             font-family: 'Inter', sans-serif;
-            line-height: 1.6;
-            color: #333;
+            line-height: 1.7;
+            color: var(--brown-900);
             overflow-x: hidden;
         }
 
-        /* Color Palette */
-        :root {
-            --brown-900: #2D1B14;
-            --brown-800: #3E2C21;
-            --brown-700: #5C4033;
-            --brown-600: #8B7355;
-            --brown-500: #A5947A;
-            --brown-400: #D2B48C;
-            --brown-300: #E8D5B7;
-            --brown-200: #F5EDE3;
-            --brown-100: #FAF7F4;
-            --white: #FFFFFF;
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 500;
         }
 
         /* Navigation */
@@ -47,23 +54,22 @@
         }
 
         nav.scrolled {
-            background: var(--white);
-            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            box-shadow: var(--shadow-light);
         }
 
         .nav-container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 2rem;
+            padding: 0 5%;
         }
 
         .logo {
             font-family: 'Playfair Display', serif;
             font-size: 1.8rem;
-            font-weight: 700;
+            font-weight: 600;
             color: var(--brown-900);
             text-decoration: none;
         }
@@ -71,7 +77,7 @@
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 2.5rem;
+            gap: 3rem;
         }
 
         .nav-links a {
@@ -89,11 +95,11 @@
         .nav-links a::after {
             content: '';
             position: absolute;
-            width: 0;
-            height: 2px;
             bottom: -5px;
             left: 0;
-            background: var(--brown-900);
+            width: 0;
+            height: 2px;
+            background: var(--brown-500);
             transition: width 0.3s ease;
         }
 
@@ -104,8 +110,8 @@
         /* Hero Section */
         .hero {
             height: 100vh;
-            background: linear-gradient(rgba(45, 27, 20, 0.6), rgba(45, 27, 20, 0.6)), 
-                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%23FAF7F4" width="1200" height="800"/><path fill="%23D2B48C" opacity="0.3" d="M0 400Q300 200 600 400T1200 400V800H0Z"/><path fill="%23A5947A" opacity="0.2" d="M0 600Q400 450 800 550T1200 600V800H0Z"/></svg>');
+            background: linear-gradient(rgba(26, 15, 11, 0.4), rgba(26, 15, 11, 0.4)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%23f5ebe0" width="1200" height="800"/><path fill="%23d2b48c" opacity="0.3" d="M0 400Q200 200 400 400T800 400Q1000 600 1200 400V800H0Z"/><circle fill="%23b08d6f" opacity="0.2" cx="300" cy="150" r="80"/><circle fill="%238d6e52" opacity="0.1" cx="900" cy="250" r="120"/></svg>');
             background-size: cover;
             background-position: center;
             display: flex;
@@ -117,53 +123,51 @@
         }
 
         .hero-content h1 {
-            font-family: 'Playfair Display', serif;
             font-size: clamp(3rem, 8vw, 6rem);
             margin-bottom: 1.5rem;
             opacity: 0;
-            animation: fadeInUp 1s ease forwards;
+            animation: fadeInUp 1s 0.5s forwards;
         }
 
         .hero-content p {
             font-size: 1.3rem;
             max-width: 600px;
-            margin: 0 auto 2.5rem;
+            margin: 0 auto 3rem;
             opacity: 0;
-            animation: fadeInUp 1s ease 0.3s forwards;
+            animation: fadeInUp 1s 0.8s forwards;
         }
 
         .cta-button {
             display: inline-block;
             background: var(--white);
             color: var(--brown-900);
-            padding: 1rem 2.5rem;
+            padding: 1rem 3rem;
             text-decoration: none;
             border-radius: 50px;
             font-weight: 500;
             transition: all 0.3s ease;
+            box-shadow: var(--shadow-medium);
             opacity: 0;
-            animation: fadeInUp 1s ease 0.6s forwards;
-            box-shadow: 0 10px 30px rgba(255,255,255,0.3);
+            animation: fadeInUp 1s 1.1s forwards;
         }
 
         .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(255,255,255,0.4);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-heavy);
         }
 
         /* Sections */
-        section {
+        .section {
             padding: 120px 0;
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding-left: 2rem;
-            padding-right: 2rem;
+            padding-left: 5%;
+            padding-right: 5%;
         }
 
         .section-title {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(2.5rem, 5vw, 4rem);
             text-align: center;
+            font-size: clamp(2.5rem, 5vw, 4rem);
             margin-bottom: 4rem;
             color: var(--brown-900);
             position: relative;
@@ -172,12 +176,12 @@
         .section-title::after {
             content: '';
             position: absolute;
-            width: 60px;
-            height: 3px;
-            background: var(--brown-600);
-            bottom: -15px;
+            bottom: -20px;
             left: 50%;
             transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--brown-500);
         }
 
         /* About Section */
@@ -188,43 +192,44 @@
         .about-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 4rem;
+            gap: 6rem;
             align-items: center;
         }
 
         .about-text h3 {
-            font-family: 'Playfair Display', serif;
             font-size: 2rem;
-            color: var(--brown-900);
             margin-bottom: 1.5rem;
+            color: var(--brown-900);
         }
 
         .about-text p {
             color: var(--brown-700);
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
             font-size: 1.1rem;
         }
 
-        .about-image {
-            position: relative;
-            height: 400px;
-            background: linear-gradient(45deg, var(--brown-400), var(--brown-500));
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
         }
 
-        .about-image::before {
-            content: '';
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 50%;
-            top: -50px;
-            right: -50px;
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--brown-900);
+            display: block;
+        }
+
+        .stat-label {
+            color: var(--brown-600);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         /* Projects Section */
@@ -240,33 +245,47 @@
             border-radius: 20px;
             overflow: hidden;
             background: var(--white);
-            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            box-shadow: var(--shadow-light);
             transition: all 0.4s ease;
+            cursor: pointer;
         }
 
         .project-card:hover {
-            transform: translateY(-15px);
-            box-shadow: 0 30px 80px rgba(0,0,0,0.15);
+            transform: translateY(-20px);
+            box-shadow: var(--shadow-heavy);
         }
 
-        .project-card img {
-            width: 100%;
+        .project-image {
             height: 70%;
-            object-fit: cover;
+            background: linear-gradient(45deg, var(--brown-400), var(--brown-300));
+            position: relative;
+            overflow: hidden;
         }
 
-        .project-info {
-            padding: 1.5rem;
+        .project-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
         }
 
-        .project-info h4 {
-            color: var(--brown-900);
+        .project-card:hover .project-image::before {
+            left: 100%;
+        }
+
+        .project-content {
+            padding: 2rem;
+            height: 30%;
+        }
+
+        .project-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
             margin-bottom: 0.5rem;
-        }
-
-        .project-info p {
-            color: var(--brown-600);
-            font-size: 0.95rem;
         }
 
         /* Services Section */
@@ -277,54 +296,49 @@
         }
 
         .service-card {
-            text-align: center;
-            padding: 3rem 2rem;
             background: var(--white);
+            padding: 3rem 2rem;
             border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            text-align: center;
+            box-shadow: var(--shadow-light);
             transition: all 0.3s ease;
-            border-top: 4px solid transparent;
+            border: 1px solid var(--brown-100);
         }
 
         .service-card:hover {
             transform: translateY(-10px);
-            border-top-color: var(--brown-600);
+            box-shadow: var(--shadow-medium);
         }
 
         .service-icon {
             width: 80px;
             height: 80px;
             background: linear-gradient(135deg, var(--brown-400), var(--brown-500));
-            border-radius: 50%;
+            border-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 1.5rem;
+            margin: 0 auto 2rem;
             font-size: 2rem;
             color: var(--white);
         }
 
-        .service-card h4 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            color: var(--brown-900);
-            margin-bottom: 1rem;
-        }
-
         /* Testimonials */
-        .testimonials {
-            background: var(--brown-100);
-        }
-
-        .testimonial-slider {
+        .testimonial-container {
             max-width: 800px;
             margin: 0 auto;
-            text-align: center;
+            position: relative;
+            height: 300px;
         }
 
         .testimonial {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow-medium);
+            text-align: center;
             opacity: 0;
-            transform: translateY(30px);
+            transform: translateY(50px);
             transition: all 0.6s ease;
         }
 
@@ -334,51 +348,30 @@
         }
 
         .testimonial-text {
-            font-size: 1.3rem;
             font-style: italic;
-            color: var(--brown-800);
+            font-size: 1.2rem;
             margin-bottom: 2rem;
-            line-height: 1.8;
+            color: var(--brown-700);
         }
 
         .testimonial-author {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-        }
-
-        .author-avatar {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: var(--brown-500);
-        }
-
-        .author-info h5 {
+            font-weight: 500;
             color: var(--brown-900);
-            margin-bottom: 0.25rem;
-        }
-
-        .author-info span {
-            color: var(--brown-600);
-            font-size: 0.95rem;
         }
 
         /* Contact Section */
         .contact {
-            background: var(--brown-900);
-            color: var(--white);
+            background: var(--brown-100);
         }
 
         .contact-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 4rem;
+            gap: 6rem;
+            align-items: center;
         }
 
         .contact-info h3 {
-            font-family: 'Playfair Display', serif;
             font-size: 2rem;
             margin-bottom: 2rem;
         }
@@ -386,81 +379,52 @@
         .contact-item {
             display: flex;
             align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
         }
 
         .contact-item i {
             width: 50px;
             height: 50px;
             background: var(--brown-500);
-            border-radius: 50%;
+            color: var(--white);
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
+            margin-right: 1.5rem;
             font-size: 1.2rem;
         }
 
         .contact-form {
-            background: rgba(255,255,255,0.1);
-            padding: 2.5rem;
+            background: var(--white);
+            padding: 3rem;
             border-radius: 20px;
-            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow-light);
         }
 
         .form-group {
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
         }
 
         .form-group input,
         .form-group textarea {
             width: 100%;
             padding: 1rem;
-            border: none;
+            border: 1px solid var(--brown-200);
             border-radius: 12px;
-            background: rgba(255,255,255,0.9);
             font-family: inherit;
-            transition: all 0.3s ease;
+            transition: border-color 0.3s ease;
+            background: var(--brown-100);
         }
 
         .form-group input:focus,
         .form-group textarea:focus {
             outline: none;
-            background: var(--white);
-            box-shadow: 0 0 0 3px rgba(255,255,255,0.3);
-        }
-
-        .submit-btn {
-            background: var(--brown-400);
-            color: var(--white);
-            border: none;
-            padding: 1rem 2.5rem;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            width: 100%;
-        }
-
-        .submit-btn:hover {
-            background: var(--brown-500);
-            transform: translateY(-2px);
-        }
-
-        /* Footer */
-        footer {
-            background: var(--brown-900);
-            color: var(--white);
-            text-align: center;
-            padding: 2rem;
+            border-color: var(--brown-500);
         }
 
         /* Animations */
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -476,17 +440,15 @@
             .about-content,
             .contact-content {
                 grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            section {
-                padding: 80px 0;
-                padding-left: 1.5rem;
-                padding-right: 1.5rem;
+                gap: 3rem;
             }
 
             .projects-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 80px 0;
             }
         }
 
@@ -522,138 +484,149 @@
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-content">
-            <h1>Timeless<br>Interior Design</h1>
-            <p>Crafting elegant spaces that reflect your unique style and personality. Where luxury meets functionality.</p>
+            <h1>Timeless Elegance</h1>
+            <p>Crafting extraordinary spaces that harmonize beauty, functionality, and emotion. Where every detail tells a story.</p>
             <a href="#contact" class="cta-button">Explore Our Work</a>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="about fade-in">
+    <section id="about" class="section about fade-in">
         <h2 class="section-title">About Dwarrek Designs</h2>
         <div class="about-content">
             <div class="about-text">
-                <h3>Elegance in Every Detail</h3>
-                <p>With over a decade of experience, Dwarrek Designs specializes in creating sophisticated, functional spaces that stand the test of time. Our philosophy centers around minimalism, quality craftsmanship, and personalized design solutions.</p>
-                <p>We believe that great design should enhance life, not complicate it. Every project receives our undivided attention, from concept to completion.</p>
+                <h3>Creating Spaces That Inspire</h3>
+                <p>At Dwarrek Designs, we believe that interior design is more than aesthetics—it's about creating environments that resonate with your lifestyle and aspirations. With over a decade of experience, we transform ordinary spaces into extraordinary experiences.</p>
+                <p>Our philosophy centers on minimalism, functionality, and timeless elegance. Every project is a collaboration between our expertise and your vision.</p>
             </div>
-            <div class="about-image">
-                <i class="fas fa-home" style="font-size: 4rem; color: rgba(255,255,255,0.9); z-index: 2;"></i>
+            <div class="about-stats">
+                <div class="stat">
+                    <span class="stat-number">150+</span>
+                    <span class="stat-label">Projects Completed</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">98%</span>
+                    <span class="stat-label">Client Satisfaction</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">12</span>
+                    <span class="stat-label">Years Experience</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">50+</span>
+                    <span class="stat-label">Happy Clients</span>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="fade-in">
+    <section id="projects" class="section fade-in">
         <h2 class="section-title">Our Projects</h2>
         <div class="projects-grid">
-            <div class="project-card">
-                <div style="background: linear-gradient(135deg, var(--brown-300), var(--brown-400)); height: 70%; display: flex; align-items: center; justify-content: center;">
-                    <i class="fas fa-couch" style="font-size: 4rem; color: var(--brown-900);"></i>
-                </div>
-                <div class="project-info">
-                    <h4>Modern Residence</h4>
-                    <p>Luxury living space transformation</p>
+            <div class="project-card fade-in">
+                <div class="project-image"></div>
+                <div class="project-content">
+                    <h3 class="project-title">Urban Retreat</h3>
+                    <p>Modern apartment transformation</p>
                 </div>
             </div>
-            <div class="project-card">
-                <div style="background: linear-gradient(135deg, var(--brown-400), var(--brown-500)); height: 70%; display: flex; align-items: center; justify-content: center;">
-                    <i class="fas fa-building" style="font-size: 4rem; color: var(--white);"></i>
-                </div>
-                <div class="project-info">
-                    <h4>Commercial Office</h4>
-                    <p>Contemporary workspace design</p>
+            <div class="project-card fade-in">
+                <div class="project-image"></div>
+                <div class="project-content">
+                    <h3 class="project-title">Coastal Haven</h3>
+                    <p>Beach house redesign</p>
                 </div>
             </div>
-            <div class="project-card">
-                <div style="background: linear-gradient(135deg, var(--brown-200), var(--brown-300)); height: 70%; display: flex; align-items: center; justify-content: center;">
-                    <i class="fas fa-coffee" style="font-size: 4rem; color: var(--brown-900);"></i>
+            <div class="project-card fade-in">
+                <div class="project-image"></div>
+                <div class="project-content">
+                    <h3 class="project-title">Executive Suite</h3>
+                    <p>Corporate office elegance</p>
                 </div>
-                <div class="project-info">
-                    <h4>Café Interior</h4>
-                    <p>Warm and inviting atmosphere</p>
+            </div>
+            <div class="project-card fade-in">
+                <div class="project-image"></div>
+                <div class="project-content">
+                    <h3 class="project-title">Rustic Modern</h3>
+                    <p>Country home renovation</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="fade-in">
+    <section id="services" class="section fade-in">
         <h2 class="section-title">Our Services</h2>
         <div class="services-grid">
-            <div class="service-card">
+            <div class="service-card fade-in">
                 <div class="service-icon">
-                    <i class="fas fa-drafting-compass"></i>
+                    <i class="fas fa-home"></i>
                 </div>
-                <h4>Interior Design</h4>
-                <p>Complete interior design solutions from concept to completion</p>
+                <h3>Residential Design</h3>
+                <p>Complete home transformations from concept to completion</p>
             </div>
-            <div class="service-card">
+            <div class="service-card fade-in">
                 <div class="service-icon">
-                    <i class="fas fa-lightbulb"></i>
+                    <i class="fas fa-building"></i>
                 </div>
-                <h4>Lighting Design</h4>
-                <p>Strategic lighting plans that enhance ambiance and functionality</p>
+                <h3>Commercial Spaces</h3>
+                <p>Office, retail, and hospitality environments</p>
             </div>
-            <div class="service-card">
+            <div class="service-card fade-in">
                 <div class="service-icon">
-                    <i class="fas fa-cube"></i>
+                    <i class="fas fa-paint-brush"></i>
                 </div>
-                <h4>3D Visualization</h4>
-                <p>Photorealistic renderings to bring your vision to life</p>
+                <h3>Custom Furniture</h3>
+                <p>Bespoke pieces designed specifically for your space</p>
             </div>
         </div>
     </section>
 
     <!-- Testimonials Section -->
-    <section id="testimonials" class="testimonials fade-in">
+    <section id="testimonials" class="section fade-in">
         <h2 class="section-title">What Our Clients Say</h2>
-        <div class="testimonial-slider">
+        <div class="testimonial-container">
             <div class="testimonial active">
                 <p class="testimonial-text">"Dwarrek Designs transformed our home into a sanctuary. Their attention to detail and understanding of our needs was exceptional."</p>
-                <div class="testimonial-author">
-                    <div class="author-avatar"></div>
-                    <div class="author-info">
-                        <h5>Sarah Johnson</h5>
-                        <span>Homeowner</span>
-                    </div>
-                </div>
+                <div class="testimonial-author">- Sarah & Michael Thompson</div>
             </div>
             <div class="testimonial">
-                <p class="testimonial-text">"Professional, creative, and delivered beyond expectations. Our office space now inspires creativity and productivity."</p>
-                <div class="testimonial-author">
-                    <div class="author-avatar"></div>
-                    <div class="author-info">
-                        <h5>Michael Chen</h5>
-                        <span>CEO, Tech Startup</span>
-                    </div>
-                </div>
+                <p class="testimonial-text">"The office redesign exceeded all expectations. Professional, creative, and delivered on time. Highly recommended!"</p>
+                <div class="testimonial-author">- David Chen, CEO TechNova</div>
+            </div>
+            <div class="testimonial">
+                <p class="testimonial-text">"Every element was carefully curated. Our beach house now feels like a five-star resort. Pure perfection."</p>
+                <div class="testimonial-author">- Emily Rodriguez</div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="contact fade-in">
-        <h2 class="section-title" style="color: var(--white);">Let's Create Something Beautiful</h2>
+    <section id="contact" class="section contact fade-in">
+        <h2 class="section-title">Let's Create Something Beautiful</h2>
         <div class="contact-content">
             <div class="contact-info">
                 <h3>Get In Touch</h3>
                 <div class="contact-item">
                     <i class="fas fa-phone"></i>
                     <div>
-                        <strong>+91 84870 22712</strong>
+                        <strong>Phone</strong>
+                        <div>+91 84870 22712</div>
                     </div>
                 </div>
                 <div class="contact-item">
                     <i class="fas fa-envelope"></i>
                     <div>
-                        <strong>dwarrekstudio@yahoo.com</strong>
+                        <strong>Email</strong>
+                        <div>dwarrekstudio@yahoo.com</div>
                     </div>
                 </div>
                 <div class="contact-item">
                     <i class="fas fa-map-marker-alt"></i>
                     <div>
-                        <strong>Anand<br>Gujarat, 388001 </strong>
+                        <strong>Studio</strong>
+                        <div> Anand <br>Gujarat, 388001</div>
                     </div>
                 </div>
             </div>
@@ -667,14 +640,10 @@
                 <div class="form-group">
                     <textarea rows="5" placeholder="Tell us about your project..." required></textarea>
                 </div>
-                <button type="submit" class="submit-btn">Send Message</button>
+                <button type="submit" class="cta-button" style="width: 100%; margin-top: 1rem;">Send Message</button>
             </form>
         </div>
     </section>
-
-    <footer>
-        <p>&copy; 2026 Dwarrek Designs. All rights reserved. | Crafted with <i class="fas fa-heart" style="color: var(--brown-400);"></i> for beautiful spaces.</p>
-    </footer>
 
     <script>
         // Navbar scroll effect
@@ -692,12 +661,7 @@
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
             });
         });
 
@@ -723,13 +687,11 @@
         const testimonials = document.querySelectorAll('.testimonial');
         let currentTestimonial = 0;
 
-        function nextTestimonial() {
+        setInterval(() => {
             testimonials[currentTestimonial].classList.remove('active');
             currentTestimonial = (currentTestimonial + 1) % testimonials.length;
             testimonials[currentTestimonial].classList.add('active');
-        }
-
-        setInterval(nextTestimonial, 5000);
+        }, 5000);
 
         // Form submission
         document.querySelector('.contact-form').addEventListener('submit', function(e) {
