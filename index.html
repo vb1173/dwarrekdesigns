@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dwarrek Designs</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
-  background: #0d0d0d;
-  color: #fff;
+  background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
+  color: white;
 }
 
 /* Navbar */
@@ -18,33 +21,26 @@ header {
   display: flex;
   justify-content: space-between;
   padding: 20px 40px;
+  backdrop-filter: blur(15px);
   position: sticky;
   top: 0;
-  background: rgba(0,0,0,0.6);
-  backdrop-filter: blur(10px);
-}
-
-.logo {
-  font-weight: bold;
 }
 
 /* Hero */
 .hero {
-  height: 90vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 0 40px;
+  padding: 40px;
 }
 
 .hero h1 {
-  font-size: 60px;
-  max-width: 600px;
+  font-size: 55px;
 }
 
 .hero p {
   color: #aaa;
-  margin-top: 10px;
 }
 
 .btn {
@@ -52,8 +48,8 @@ header {
   padding: 12px 25px;
   background: white;
   color: black;
+  border-radius: 30px;
   border: none;
-  cursor: pointer;
 }
 
 /* Section */
@@ -61,57 +57,76 @@ header {
   padding: 80px 40px;
 }
 
-.section h2 {
-  margin-bottom: 30px;
-}
-
 /* Grid */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
-  gap: 20px;
+  gap: 25px;
 }
 
-/* Portfolio Card */
+/* Cards */
 .card {
+  border-radius: 15px;
   overflow: hidden;
-  border-radius: 10px;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(10px);
 }
 
 .card img {
   width: 100%;
   height: 250px;
   object-fit: cover;
-  transition: 0.5s;
 }
 
-.card:hover img {
-  transform: scale(1.1);
-}
-
-/* Services */
-.service {
-  background: #1a1a1a;
+/* Contact */
+.contact-box {
+  background: rgba(255,255,255,0.05);
   padding: 30px;
-  border-radius: 10px;
+  border-radius: 15px;
+  max-width: 400px;
+}
+
+.contact-box p {
+  color: #ccc;
+}
+
+.contact-btn, .insta-btn {
+  display: inline-block;
+  margin-top: 15px;
+  margin-right: 10px;
+  padding: 10px 20px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.contact-btn {
+  background: #25D366;
+  color: white;
+}
+
+.insta-btn {
+  background: #E1306C;
+  color: white;
 }
 
 /* Footer */
 footer {
   text-align: center;
-  padding: 30px;
-  color: #777;
+  padding: 20px;
+  color: #888;
 }
 
-/* WhatsApp */
+/* WhatsApp Floating */
 .whatsapp {
   position: fixed;
   bottom: 20px;
   right: 20px;
   background: #25D366;
-  padding: 15px;
+  padding: 16px;
   border-radius: 50%;
   color: white;
+  font-size: 22px;
   text-decoration: none;
 }
 </style>
@@ -120,49 +135,40 @@ footer {
 <body>
 
 <header>
-  <div class="logo">Dwarrek Designs</div>
+  <div>Dwarrek Designs</div>
   <div>Luxury Interiors</div>
 </header>
 
 <section class="hero">
-  <h1>Transforming Spaces Into Luxury Living</h1>
-  <p>Minimal • Elegant • Functional Designs</p>
+  <h1>Design That Feels Like Luxury</h1>
+  <p>Minimal • Elegant • Modern Interiors</p>
   <button class="btn">Book Consultation</button>
 </section>
 
 <section class="section">
   <h2>Our Work</h2>
   <div class="grid">
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c">
-    </div>
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6">
-    </div>
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d">
-    </div>
-
+    <div class="card"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c"></div>
+    <div class="card"><img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6"></div>
+    <div class="card"><img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d"></div>
   </div>
 </section>
 
 <section class="section">
-  <h2>Services</h2>
-  <div class="grid">
-    <div class="service">Interior Design</div>
-    <div class="service">3D Visualization</div>
-    <div class="service">Space Planning</div>
-  </div>
-</section>
+  <h2>Contact</h2>
 
-<section class="section">
-  <h2>About</h2>
-  <p style="max-width:600px; color:#aaa;">
-    Dwarrek Designs creates elegant and modern spaces that reflect your personality.
-  </p>
+  <div class="contact-box">
+    <p><i class="fa-solid fa-phone"></i> +91 9876543210</p>
+    <p><i class="fa-solid fa-envelope"></i> dwarrekdesigns@gmail.com</p>
+
+    <a href="https://wa.me/918487022712" target="_blank" class="contact-btn">
+      <i class="fa-brands fa-whatsapp"></i> WhatsApp
+    </a>
+
+    <a href="https://instagram.com/dwarrek.designs" target="_blank" class="insta-btn">
+      <i class="fa-brands fa-instagram"></i> Instagram
+    </a>
+  </div>
 </section>
 
 <footer>
