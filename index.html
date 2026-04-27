@@ -28,9 +28,22 @@
         }
         
         /* Logo Styling */
-        .logo-container { display: flex; align-items: center; }
-        .logo-img { height: 45px; width: auto; transition: 0.3s; }
-        .logo-img:hover { transform: scale(1.05); }
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo-img {
+  height: 45px;      /* Perfect standard size */
+  width: auto;       /* Maintain aspect ratio */
+  max-height: 50px;  /* Prevent oversize */
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.logo-img:hover {
+  transform: scale(1.08);
+}
 
         nav ul { display: flex; list-style: none; }
         nav ul li { margin-left: 30px; }
