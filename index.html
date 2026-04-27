@@ -8,9 +8,9 @@
 <style>
 body {
   margin: 0;
-  font-family: 'Arial', sans-serif;
-  background: #ffffff;
-  color: #222;
+  font-family: 'Segoe UI', sans-serif;
+  background: #0f0f0f;
+  color: #fff;
 }
 
 /* Header */
@@ -18,69 +18,82 @@ header {
   padding: 20px 40px;
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #222;
 }
 
 .logo {
   font-weight: bold;
   font-size: 20px;
+  letter-spacing: 1px;
 }
 
 /* Hero */
 .hero {
-  padding: 100px 20px;
+  padding: 120px 20px;
   text-align: center;
 }
 
 .hero h1 {
-  font-size: 42px;
-  margin-bottom: 10px;
+  font-size: 48px;
+  font-weight: 600;
 }
 
 .hero p {
-  color: #777;
+  color: #aaa;
+  margin-top: 10px;
   font-size: 18px;
 }
 
+/* Button */
 .btn {
-  margin-top: 25px;
+  margin-top: 30px;
   padding: 14px 30px;
-  background: black;
-  color: white;
+  background: linear-gradient(45deg, #caa45f, #e6c27a);
+  color: black;
   border: none;
   cursor: pointer;
+  font-weight: bold;
 }
 
 /* Section */
 .section {
-  padding: 70px 20px;
+  padding: 80px 20px;
   max-width: 1100px;
   margin: auto;
 }
 
 .section h2 {
-  margin-bottom: 30px;
+  margin-bottom: 40px;
+  text-align: center;
 }
 
 /* Grid */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
+  gap: 25px;
 }
 
 /* Cards */
 .card {
-  background: #f5f5f5;
-  padding: 20px;
+  background: #1a1a1a;
+  padding: 25px;
   text-align: center;
+  border: 1px solid #333;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  border-color: #caa45f;
 }
 
 /* Portfolio */
 .portfolio img {
   width: 100%;
-  height: 200px;
+  height: 220px;
   object-fit: cover;
+  border-radius: 8px;
 }
 
 /* About */
@@ -88,16 +101,18 @@ header {
   text-align: center;
   max-width: 700px;
   margin: auto;
+  color: #bbb;
 }
 
 /* Footer */
 footer {
   text-align: center;
   padding: 20px;
-  border-top: 1px solid #eee;
+  border-top: 1px solid #222;
+  color: #888;
 }
 
-/* WhatsApp Button */
+/* WhatsApp */
 .whatsapp {
   position: fixed;
   bottom: 20px;
@@ -116,12 +131,12 @@ footer {
 
 <header>
   <div class="logo">Dwarrek Designs</div>
-  <div>Interior Design Studio</div>
+  <div>Luxury Interior Studio</div>
 </header>
 
 <section class="hero">
-  <h1>We Design Spaces That Feel Like Home</h1>
-  <p>Minimal • Functional • Timeless Interiors</p>
+  <h1>Designing Elegant Spaces</h1>
+  <p>Luxury • Minimal • Timeless Interiors</p>
   <button class="btn">Book Consultation</button>
 </section>
 
@@ -137,24 +152,24 @@ footer {
 <section class="section portfolio">
   <h2>Our Work</h2>
   <div class="grid">
-    <img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511">
-    <img src="https://images.unsplash.com/photo-1493666438817-866a91353ca9">
-    <img src="https://images.unsplash.com/photo-1484154218962-a197022b5858">
+    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c">
+    <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6">
+    <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d">
   </div>
 </section>
 
 <section class="section about">
   <h2>About Us</h2>
   <p>
-    Dwarrek Designs creates modern, functional and aesthetic spaces tailored to your lifestyle.
-    We focus on simplicity, smart planning, and elegant interiors.
+    At Dwarrek Designs, we craft refined and luxurious spaces that reflect elegance,
+    comfort, and timeless beauty.
   </p>
 </section>
 
 <section class="section">
   <h2>Contact</h2>
-  <p>📞 +91 XXXXX XXXXX</p>
-  <p>📩 dwarrekdesigns@gmail.com</p>
+  <p>📞 +91 84870 22712</p>
+  <p>📩 dwarrekstudio@yahoo.com</p>
 </section>
 
 <footer>
