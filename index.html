@@ -3,102 +3,151 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dwarrek Designs | Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+    <title>Dwarrek Designs | Modern Interior Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
     
     <style>
-        /* YAHAN AAPKA CSS HAI */
+        /* Modern Color Palette & Variables */
+        :root {
+            --bg-color: #121212; /* Deep Charcoal */
+            --accent-color: #C5A059; /* Soft Muted Gold */
+            --text-main: #FFFFFF;
+            --text-dim: #A0A0A0;
+            --card-bg: #1E1E1E;
+        }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Montserrat', sans-serif; line-height: 1.6; color: #333; background-color: #fff; scroll-behavior: smooth; }
-        .container { padding: 80px 10%; max-width: 1200px; margin: auto; text-align: center; }
-        h1, h2 { font-family: 'Playfair Display', serif; margin-bottom: 20px; }
-        nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 10%; background: #fff; position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #eee; }
-        .logo { font-weight: 600; letter-spacing: 2px; }
+        body { font-family: 'Jost', sans-serif; background-color: var(--bg-color); color: var(--text-main); scroll-behavior: smooth; overflow-x: hidden; }
+
+        /* Navigation */
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 25px 8%; background: rgba(18, 18, 18, 0.95); position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(10px); }
+        .logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; letter-spacing: 3px; color: var(--accent-color); font-weight: 700; }
         nav ul { display: flex; list-style: none; }
-        nav ul li { margin-left: 20px; }
-        nav ul li a { text-decoration: none; color: #333; font-size: 0.9rem; }
-        .hero { height: 80vh; background: #222 url('https://via.placeholder.com/1920x1080') no-repeat center center/cover; display: flex; align-items: center; justify-content: center; color: #fff; text-align: center; }
-        .hero-content h1 { font-size: 3.5rem; }
-        .btn { display: inline-block; margin-top: 20px; padding: 12px 30px; background: #fff; color: #000; text-decoration: none; font-weight: 600; transition: 0.3s; }
-        .gallery { column-count: 2; column-gap: 20px; margin-top: 30px; }
-        .work-item img { width: 100%; margin-bottom: 20px; filter: grayscale(100%); transition: 0.5s; border: 1px solid #eee; }
-        .work-item img:hover { filter: grayscale(0%); }
-        .bg-light { background-color: #f9f9f9; }
-        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-top: 40px; }
-        .service-card { padding: 40px; background: #fff; border: 1px solid #eee; }
-        .contact-links a { display: inline-block; margin: 10px 15px; text-decoration: none; color: #333; font-weight: 600; border-bottom: 2px solid transparent; }
-        .contact-links a:hover { border-bottom: 2px solid #000; }
-        footer { padding: 40px; text-align: center; font-size: 0.8rem; color: #888; }
-        @media (max-width: 768px) { .gallery { column-count: 1; } nav ul { display: none; } .hero-content h1 { font-size: 2.5rem; } }
+        nav ul li { margin-left: 30px; }
+        nav ul li a { text-decoration: none; color: var(--text-main); font-size: 0.9rem; font-weight: 400; letter-spacing: 1px; transition: 0.3s; }
+        nav ul li a:hover { color: var(--accent-color); }
+
+        /* Hero Section */
+        .hero { height: 90vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 0 5%; background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=1920') no-repeat center center/cover; }
+        .hero-content h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 6vw, 4.5rem); margin-bottom: 15px; font-weight: 500; }
+        .hero-content p { font-size: 1.1rem; color: var(--text-dim); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 30px; }
+        .btn { padding: 15px 40px; border: 1px solid var(--accent-color); color: var(--accent-color); text-decoration: none; font-size: 0.9rem; letter-spacing: 2px; transition: 0.4s; }
+        .btn:hover { background: var(--accent-color); color: #000; }
+
+        /* Sections Styling */
+        .container { padding: 100px 10%; max-width: 1400px; margin: auto; }
+        h2 { font-family: 'Playfair Display', serif; font-size: 2.8rem; text-align: center; margin-bottom: 50px; color: var(--accent-color); }
+        p.desc { text-align: center; max-width: 700px; margin: -30px auto 50px; color: var(--text-dim); line-height: 1.8; }
+
+        /* Works Gallery - Modern Grid */
+        .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 20px; }
+        .work-item { position: relative; overflow: hidden; height: 450px; cursor: pointer; }
+        .work-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s transform; }
+        .work-item:hover img { transform: scale(1.1); }
+        .work-overlay { position: absolute; bottom: 0; left: 0; width: 100%; padding: 30px; background: linear-gradient(transparent, rgba(0,0,0,0.8)); opacity: 0; transition: 0.4s; }
+        .work-item:hover .work-overlay { opacity: 1; }
+
+        /* Services Cards */
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+        .service-card { padding: 50px 30px; background: var(--card-bg); border-top: 3px solid transparent; transition: 0.4s; text-align: center; }
+        .service-card:hover { border-top-color: var(--accent-color); transform: translateY(-10px); }
+        .service-card h3 { margin-bottom: 15px; font-family: 'Playfair Display', serif; font-size: 1.5rem; }
+        .service-card p { color: var(--text-dim); font-size: 0.95rem; }
+
+        /* Contact Section */
+        .contact-box { text-align: center; border: 1px solid #333; padding: 60px; }
+        .contact-links { display: flex; justify-content: center; flex-wrap: wrap; gap: 30px; margin-top: 30px; }
+        .contact-links a { text-decoration: none; color: var(--text-main); font-weight: 500; font-size: 1rem; transition: 0.3s; display: flex; align-items: center; gap: 8px; }
+        .contact-links a:hover { color: var(--accent-color); }
+
+        footer { padding: 50px; text-align: center; font-size: 0.8rem; color: #555; border-top: 1px solid #222; letter-spacing: 1px; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul { display: none; }
+            .container { padding: 60px 5%; }
+            h2 { font-size: 2.2rem; }
+        }
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="logo">DWARREK DESIGNS</div>
+        <div class="logo">DWARREK</div>
         <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#works">Works</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#about">ABOUT</a></li>
+            <li><a href="#works">PROJECTS</a></li>
+            <li><a href="#services">SERVICES</a></li>
+            <li><a href="#contact">CONTACT</a></li>
         </ul>
     </nav>
 
     <header class="hero">
         <div class="hero-content">
-            <h1>Dwarrek Designs</h1>
-            <p>Where Simplicity Meets Sophistication.</p>
-            <a href="#works" class="btn">View Our Projects</a>
+            <p>Premium Interior Design</p>
+            <h1>Defining Modern Living.</h1>
+            <a href="#works" class="btn">VIEW PORTFOLIO</a>
         </div>
     </header>
 
     <section id="about" class="container">
-        <h2>About Us</h2>
-        <p>Hum maante hain ki ek achha design wahi hai jo sundar dikhne ke saath-saath rehne mein bhi sukoon de. Dwarrek Designs mein, hum unnecessary shor ko hata kar sirf wahi cheezein rakhte hain jo aapke space mein value aur style add karein.</p>
+        <h2>Our Essence</h2>
+        <p class="desc">Dwarrek Designs is a boutique studio specializing in minimalist and high-end residential spaces. We don't just design rooms; we curate experiences through textures, light, and symmetry.</p>
     </section>
 
     <section id="works" class="container">
-        <h2>Our Works</h2>
+        <h2>Featured Projects</h2>
         <div class="gallery">
-            <div class="work-item"><img src="https://via.placeholder.com/600x400" alt="Project 1"></div>
-            <div class="work-item"><img src="https://via.placeholder.com/600x600" alt="Project 2"></div>
-            <div class="work-item"><img src="https://via.placeholder.com/600x400" alt="Project 3"></div>
-            <div class="work-item"><img src="https://via.placeholder.com/600x700" alt="Project 4"></div>
+            <div class="work-item">
+                <img src="https://images.unsplash.com/photo-1616489953149-7551745cae7b?auto=format&fit=crop&q=80&w=800" alt="Modern Living">
+                <div class="work-overlay"><h3>Minimalist Lounge</h3></div>
+            </div>
+            <div class="work-item">
+                <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=800" alt="Luxury Bedroom">
+                <div class="work-overlay"><h3>Contemporary Suite</h3></div>
+            </div>
+            <div class="work-item">
+                <img src="https://images.unsplash.com/photo-1556912177-c54030639a60?auto=format&fit=crop&q=80&w=800" alt="Kitchen Design">
+                <div class="work-overlay"><h3>Italian Kitchen</h3></div>
+            </div>
         </div>
     </section>
 
-    <section id="services" class="bg-light">
+    <section id="services" style="background: #181818;">
         <div class="container">
-            <h2>Our Services</h2>
+            <h2>Expertise</h2>
             <div class="services-grid">
                 <div class="service-card">
-                    <h3>Residential Design</h3>
-                    <p>Cozy and clutter-free homes tailored to your lifestyle.</p>
+                    <h3>Residential</h3>
+                    <p>Tailored living spaces that reflect your personality and style.</p>
                 </div>
                 <div class="service-card">
-                    <h3>3D Visualization</h3>
-                    <p>High-quality photorealistic renders for a clear vision.</p>
+                    <h3>3D Rendering</h3>
+                    <p>Immersive photorealistic visualizations before the build begins.</p>
                 </div>
                 <div class="service-card">
-                    <h3>Consultation</h3>
-                    <p>Expert space planning and material selection.</p>
+                    <h3>Consultancy</h3>
+                    <p>Expert material selection and meticulous space planning.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <section id="contact" class="container">
-        <h2>Let's Build Together</h2>
-        <div class="contact-links">
-            <a href="tel:+918487022712">📞 Call</a>
-            <a href="https://wa.me/918487022712" target="_blank">💬 WhatsApp</a>
-            <a href="mailto:dwarrekstudio@yahoo.com">✉️ Email</a>
-            <a href="#" target="_blank">📸 Instagram</a>
+        <div class="contact-box">
+            <h2>Let's Talk Design</h2>
+            <p>Ready to transform your space in Anand or beyond?</p>
+            <div class="contact-links">
+                <a href="tel:+910000000000">CALL US</a>
+                <a href="https://wa.me/918487002712" target="_blank">WHATSAPP</a>
+                <a href="mailto:hello@dwarrek.com">EMAIL</a>
+                <a href="dwarrek.designs">INSTAGRAM</a>
+            </div>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2026 Dwarrek Designs. All rights reserved.</p>
+        <p>&copy; 2026 DWARREK DESIGNS. CRAFTED FOR ELEGANCE.</p>
     </footer>
 
 </body>
