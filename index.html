@@ -4,547 +4,648 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dwarrek Design - Premium Interior Solutions</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
-        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --ivory: #F8F1E9;
+            --muted-teal: #A8C4C2;
+            --dark-teal: #6B9A98;
+            --brown: #8B7355;
+            --dark-brown: #6B5A3F;
+            --white: #FFFFFF;
+            --shadow: 0 10px 30px rgba(107, 90, 152, 0.1);
+        }
+
         body {
             font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-brown);
+            overflow-x: hidden;
+            background: var(--ivory);
         }
-        .hero-font { font-family: 'Playfair Display', serif; }
-        .glass-effect {
+
+        /* Mobile-First Design */
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            background: var(--white);
+            min-height: 100vh;
+        }
+
+        /* Mobile Frame */
+        .mobile-frame {
+            max-width: 375px;
+            margin: 20px auto;
+            background: #000;
+            border-radius: 40px;
+            padding: 20px 10px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            position: relative;
+        }
+
+        .mobile-frame::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 5px;
+            background: #333;
+            border-radius: 10px;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--white);
+            display: flex;
+            justify-content: space-around;
+            width: 90%;
+            padding: 15px 20px;
+            border-radius: 50px;
+            box-shadow: var(--shadow);
+            z-index: 1000;
             backdrop-filter: blur(20px);
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
         }
-        .gradient-bg {
-            background: linear-gradient(135deg, #fefaf3 0%, #e8f4f8 50%, #d2b48c 100%);
-        }
-        .ai-upload-zone {
+
+        .nav-item {
+            text-align: center;
+            color: var(--muted-teal);
+            font-size: 10px;
+            font-weight: 500;
             transition: all 0.3s ease;
+            cursor: pointer;
         }
-        .ai-upload-zone.dragover {
-            background: rgba(52, 211, 153, 0.1);
-            border-color: #34D399;
-            transform: scale(1.02);
+
+        .nav-item.active {
+            color: var(--dark-teal);
         }
-        .floating-card {
-            animation: float 6s ease-in-out infinite;
+
+        .nav-item i {
+            display: block;
+            font-size: 20px;
+            margin-bottom: 4px;
         }
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-        .pulse-animation {
-            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-        }
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: .5; }
-        }
-        .spinner {
-            border: 3px solid #f3f4f6;
-            border-top: 3px solid #0f766e;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        .render-container {
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, var(--muted-teal) 0%, var(--dark-teal) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
             position: relative;
             overflow: hidden;
         }
-        .render-overlay {
+
+        .hero::before {
+            content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            pointer-events: none;
-            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="0.5" fill="rgba(255,255,255,0.05)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
         }
-        .ai-glow {
-            box-shadow: 0 0 40px rgba(52, 211, 153, 0.4);
+
+        .hero-content {
+            z-index: 2;
+            position: relative;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+            background: linear-gradient(45deg, var(--white), rgba(255,255,255,0.8));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            opacity: 0.95;
+        }
+
+        .hero p {
+            font-size: 1rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            background: var(--white);
+            color: var(--dark-teal);
+            padding: 16px 32px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            box-shadow: 0 10px 30px rgba(255,255,255,0.3);
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255,255,255,0.4);
+        }
+
+        /* Sections */
+        .section {
+            padding: 80px 0;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--dark-brown);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--muted-teal), var(--dark-teal));
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about-content {
+            text-align: center;
+            max-width: 100%;
+        }
+
+        .about-content p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            gap: 20px;
+        }
+
+        .project-card {
+            position: relative;
+            height: 250px;
+            border-radius: 20px;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--ivory), var(--white));
+            box-shadow: var(--shadow);
+            transition: all 0.4s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(107, 90, 152, 0.15);
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .project-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .project-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: white;
+            padding: 30px 20px 20px;
+        }
+
+        .project-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            gap: 25px;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 40px 25px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(168, 196, 194, 0.1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(107, 90, 152, 0.15);
+        }
+
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--muted-teal), var(--dark-teal));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 1.8rem;
+            color: white;
+        }
+
+        .service-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--dark-brown);
+        }
+
+        /* Testimonials */
+        .testimonial {
+            background: var(--white);
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .testimonial::before {
+            content: '"';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 4rem;
+            font-family: 'Playfair Display', serif;
+            color: var(--muted-teal);
+            font-weight: 600;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 25px;
+            color: #555;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--dark-brown);
+        }
+
+        /* Contact Section */
+        .contact-form {
+            background: var(--white);
+            padding: 50px 30px;
+            border-radius: 25px;
+            box-shadow: var(--shadow);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 18px 20px;
+            border: 2px solid rgba(168, 196, 194, 0.2);
+            border-radius: 15px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: all 0.3s ease;
+            background: rgba(248, 241, 233, 0.5);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--dark-teal);
+            background: var(--white);
+            box-shadow: 0 0 0 4px rgba(168, 196, 194, 0.1);
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: linear-gradient(135deg, var(--dark-teal), var(--muted-teal));
+            color: white;
+            padding: 20px;
+            border: none;
+            border-radius: 15px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 35px rgba(107, 90, 152, 0.3);
+        }
+
+        /* Scroll Indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255,255,255,0.8);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 400px) {
+            .mobile-frame {
+                max-width: 360px;
+                margin: 10px auto;
+                padding: 15px 8px;
+            }
         }
     </style>
 </head>
-<body class="bg-gradient-to-br from-ivory via-teal-muted to-brown-light min-h-screen overflow-x-hidden">
-
+<body>
     <!-- Mobile Frame -->
-    <div class="max-w-sm mx-auto mt-8 border-4 border-gray-200 rounded-3xl shadow-2xl overflow-hidden bg-white">
-        
-        <!-- Navigation -->
-        <nav class="glass-effect backdrop-blur-md fixed top-4 left-1/2 transform -translate-x-1/2 w-[90%] z-50 rounded-2xl px-6 py-4 shadow-2xl">
-            <div class="flex items-center justify-between">
-                <div class="hero-font text-2xl font-bold bg-gradient-to-r from-teal-600 to-brown-600 bg-clip-text text-transparent">
-                    DWARREK
+    <div class="mobile-frame">
+        <div class="container">
+            <!-- Hero Section -->
+            <section id="hero" class="hero">
+                <div class="hero-content">
+                    <div class="logo">DWARREK DESIGN</div>
+                    <h1>Premium Interior<br>Solutions</h1>
+                    <p>Crafting timeless spaces that reflect your unique style and personality</p>
+                    <a href="#contact" class="cta-button">Explore Our Work</a>
                 </div>
-                <button class="p-2 rounded-xl hover:bg-white/20 transition-all">
-                    <i class="fas fa-bars text-white text-lg"></i>
-                </button>
-            </div>
-        </nav>
+                <div class="scroll-indicator">
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+            </section>
 
-        <!-- Hero Section -->
-        <section class="pt-28 pb-24 px-6 gradient-bg relative overflow-hidden">
-            <div class="floating-card absolute top-20 right-10 w-20 h-20 bg-teal-500/20 rounded-2xl"></div>
-            <div class="floating-card absolute bottom-20 left-10 w-24 h-24 bg-brown-500/20 rounded-3xl"></div>
-            
-            <div class="text-center max-w-sm mx-auto">
-                <h1 class="hero-font text-4xl md:text-5xl font-bold leading-tight mb-6 bg-gradient-to-r from-gray-800 via-teal-700 to-brown-700 bg-clip-text text-transparent">
-                    Transform Your Space
-                </h1>
-                <p class="text-xl text-gray-700 font-medium mb-8 leading-relaxed">
-                    Premium interior design that blends elegance with functionality
-                </p>
-                <div class="space-y-4">
-                    <a href="#services" class="block w-full bg-gradient-to-r from-teal-600 to-teal-700 hover:from-teal-700 hover:to-teal-800 text-white font-semibold py-4 px-8 rounded-2xl shadow-2xl hover:shadow-3xl transform hover:-translate-y-1 transition-all duration-300 text-lg">
-                        Explore Services
-                    </a>
-                    <a href="#ai-visualizer" class="block w-full border-2 border-teal-500 text-teal-600 font-semibold py-4 px-8 rounded-2xl hover:bg-teal-50 transition-all duration-300 text-lg">
-                        Try AI Visualizer
-                    </a>
+            <!-- About Section -->
+            <section id="about" class="section">
+                <h2 class="section-title">About Dwarrek Design</h2>
+                <div class="about-content">
+                    <p>We create interiors that tell your story. With over 10 years of experience, our team blends modern elegance with functional beauty to craft spaces that inspire and elevate everyday living.</p>
+                    <p>Every project is a masterpiece of thoughtful design, premium materials, and meticulous craftsmanship.</p>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- Quick Stats -->
-        <div class="px-6 pb-12 space-y-6">
-            <div class="grid grid-cols-3 gap-4 text-center">
-                <div class="p-4 rounded-2xl bg-gradient-to-b from-white/70 to-white/30 backdrop-blur-sm border border-white/50">
-                    <div class="text-2xl font-bold text-teal-600">150+</div>
-                    <div class="text-sm text-gray-600">Projects</div>
+            <!-- Projects Section -->
+            <section id="projects" class="section">
+                <h2 class="section-title">Our Projects</h2>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Modern Living Room">
+                        <div class="project-overlay">
+                            <div class="project-title">Modern Residence</div>
+                            <div>Living Room</div>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="https://images.unsplash.com/photo-1600210492493-0946911123ea?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Luxury Kitchen">
+                        <div class="project-overlay">
+                            <div class="project-title">Urban Kitchen</div>
+                            <div>Kitchen Design</div>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="https://images.unsplash.com/photo-1558618047-3c8c76bbb17e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Bedroom">
+                        <div class="project-overlay">
+                            <div class="project-title">Cozy Bedroom</div>
+                            <div>Master Suite</div>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="https://images.unsplash.com/photo-1600585154526-990dced4cb0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Office Space">
+                        <div class="project-overlay">
+                            <div class="project-title">Home Office</div>
+                            <div>Work Space</div>
+                        </div>
+                    </div>
                 </div>
-                <div class="p-4 rounded-2xl bg-gradient-to-b from-white/70 to-white/30 backdrop-blur-sm border border-white/50">
-                    <div class="text-2xl font-bold text-teal-600">98%</div>
-                    <div class="text-sm text-gray-600">Satisfaction</div>
+            </section>
+
+            <!-- Services Section -->
+            <section id="services" class="section">
+                <h2 class="section-title">Our Services</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <h3>Residential Design</h3>
+                        <p>Complete home interiors from concept to execution with personalized design solutions.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <h3>Commercial Spaces</h3>
+                        <p>Professional office and retail spaces that enhance brand identity and functionality.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-drafting-compass"></i>
+                        </div>
+                        <h3>3D Visualization</h3>
+                        <p>Photorealistic renders and walkthroughs to visualize your dream space before execution.</p>
+                    </div>
                 </div>
-                <div class="p-4 rounded-2xl bg-gradient-to-b from-white/70 to-white/30 backdrop-blur-sm border border-white/50">
-                    <div class="text-2xl font-bold text-teal-600">5+</div>
-                    <div class="text-sm text-gray-600">Years Exp</div>
+            </section>
+
+            <!-- Testimonials Section -->
+            <section id="testimonials" class="section">
+                <h2 class="section-title">What Our Clients Say</h2>
+                <div class="testimonial">
+                    <div class="testimonial-text">
+                        "Dwarrek Design transformed our home into a sanctuary. Their attention to detail and understanding of our vision was exceptional."
+                    </div>
+                    <div class="testimonial-author">- Priya Sharma</div>
                 </div>
-            </div>
+                <div class="testimonial">
+                    <div class="testimonial-text">
+                        "Professional, creative, and delivered beyond expectations. Our office now reflects our brand perfectly."
+                    </div>
+                    <div class="testimonial-author">- Rohan Mehta, CEO TechNova</div>
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section id="contact" class="section">
+                <h2 class="section-title">Let's Create Something Beautiful</h2>
+                <form class="contact-form">
+                    <div class="form-group">
+                        <input type="text" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" placeholder="Your Phone">
+                    </div>
+                    <div class="form-group">
+                        <textarea rows="5" placeholder="Tell us about your project..." required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-paper-plane"></i> Send Message
+                    </button>
+                </form>
+            </section>
         </div>
 
-        <!-- About Us -->
-        <section id="about" class="px-6 pb-20">
-            <div class="max-w-md mx-auto text-center mb-16">
-                <div class="w-24 h-24 bg-gradient-to-r from-teal-500 to-teal-600 rounded-3xl mx-auto mb-6 flex items-center justify-center">
-                    <i class="fas fa-home text-3xl text-white"></i>
-                </div>
-                <h2 class="hero-font text-3xl font-bold text-gray-800 mb-4">About Dwarrek Design</h2>
-                <p class="text-lg text-gray-600 leading-relaxed">We craft timeless interiors that reflect your personality. Every project is a masterpiece of elegance, functionality, and innovation.</p>
+        <!-- Bottom Navigation -->
+        <nav class="nav">
+            <div class="nav-item active" data-section="hero">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
             </div>
-        </section>
-
-        <!-- AI Paper Plan Visualizer - PERFECT PLAN-TO-RENDER -->
-        <section id="ai-visualizer" class="px-6 pb-20 bg-gradient-to-b from-ivory to-white">
-            <div class="text-center mb-16">
-                <h2 class="hero-font text-3xl font-bold text-gray-800 mb-4">AI Paper Plan Visualizer</h2>
-                <p class="text-xl text-gray-600 mb-8">Upload your hand-drawn plan → Get EXACT 3D visualization</p>
+            <div class="nav-item" data-section="about">
+                <i class="fas fa-user"></i>
+                <span>About</span>
             </div>
-
-            <div class="max-w-md mx-auto space-y-6">
-                <!-- Upload Zone -->
-                <div id="uploadZone" class="ai-upload-zone border-3 border-dashed border-teal-400 bg-teal-50/50 rounded-3xl p-12 text-center cursor-pointer hover:border-teal-500 transition-all duration-300 shadow-xl"
-                     onclick="document.getElementById('fileInput').click()">
-                    <i class="fas fa-cloud-upload-alt text-5xl text-teal-500 mb-6"></i>
-                    <h3 class="text-2xl font-bold text-gray-800 mb-2">📐 Drop your paper plan</h3>
-                    <p class="text-lg text-gray-600 mb-6">Hand-drawn floor plans → Perfect 3D renders</p>
-                    <p class="text-sm text-gray-500">JPG, PNG, PDF • Max 10MB</p>
-                    <input type="file" id="fileInput" accept="image/*,.pdf" class="hidden">
-                </div>
-
-                <!-- Processing State -->
-                <div id="processingState" class="hidden glass-effect p-8 rounded-3xl text-center border border-white/30 ai-glow">
-                    <div class="spinner mx-auto mb-6"></div>
-                    <h3 class="text-2xl font-bold text-gray-800 mb-2">🔬 AI Analyzing Your Plan...</h3>
-                    <div class="space-y-3 mb-8">
-                        <div class="flex justify-center space-x-3 text-sm text-gray-500">
-                            <div class="w-3 h-3 bg-teal-500 rounded-full pulse-animation"></div>
-                            <div class="w-3 h-3 bg-gray-300 rounded-full pulse-animation" style="animation-delay: 0.2s"></div>
-                            <div class="w-3 h-3 bg-gray-300 rounded-full pulse-animation" style="animation-delay: 0.4s"></div>
-                        </div>
-                        <div class="text-left text-sm space-y-1">
-                            <div><i class="fas fa-check text-teal-500 mr-2"></i>Detecting walls & rooms</div>
-                            <div><i class="fas fa-spinner fa-spin text-teal-500 mr-2"></i>Generating 3D model</div>
-                            <div><i class="fas fa-cube text-gray-400 mr-2"></i>Adding furniture</div>
-                        </div>
-                        <div class="w-full bg-gray-200 rounded-full h-2 mt-4">
-                            <div id="progressBar" class="bg-gradient-to-r from-teal-500 to-brown-500 h-2 rounded-full transition-all duration-500" style="width: 0%"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Result State - EXACT PLAN RENDER -->
-                <div id="resultState" class="hidden space-y-6">
-                    <!-- Before/After Comparison -->
-                    <div class="glass-effect p-6 rounded-3xl border border-white/30">
-                        <h4 class="font-bold text-lg text-gray-800 mb-4 text-center">📏 Before & After</h4>
-                        <div class="grid grid-cols-2 gap-4">
-                            <div>
-                                <p class="text-xs text-gray-500 mb-2">Original Paper Plan</p>
-                                <img id="originalPreview" class="w-full rounded-2xl shadow-lg border-4 border-dashed border-gray-200/50" alt="Original plan">
-                            </div>
-                            <div>
-                                <p class="text-xs text-gray-500 mb-2">AI 3D Render</p>
-                                <div class="render-container aspect-video rounded-2xl shadow-2xl overflow-hidden border-4 border-teal-200/50 ai-glow relative">
-                                    <canvas id="renderCanvas" class="w-full h-full"></canvas>
-                                    <div class="render-overlay"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Render Stats -->
-                    <div class="glass-effect p-6 rounded-3xl text-center border border-white/30">
-                        <div class="grid grid-cols-2 gap-4 mb-6">
-                            <div class="p-4 bg-teal-50/50 rounded-2xl">
-                                <div class="text-2xl font-bold text-teal-600" id="renderSqft">2850</div>
-                                <div class="text-sm text-gray-600">sqft</div>
-                            </div>
-                            <div class="p-4 bg-brown-50/50 rounded-2xl">
-                                <div class="text-2xl font-bold text-brown-600" id="renderLayout">3BHK</div>
-                                <div class="text-sm text-gray-600">Layout</div>
-                            </div>
-                        </div>
-                        <p class="text-sm text-gray-600">✅ AI detected <strong id="roomCount">4</strong> rooms perfectly matching your plan</p>
-                    </div>
-
-                    <!-- Action Buttons -->
-                    <div class="space-y-3">
-                        <button onclick="downloadRender()" class="w-full bg-gradient-to-r from-teal-600 to-brown-600 text-white font-bold py-4 px-8 rounded-2xl shadow-2xl hover:shadow-3xl transform hover:-translate-y-1 transition-all duration-300 text-lg flex items-center justify-center space-x-3 ai-glow">
-                            <i class="fas fa-download"></i>
-                            <span>Download HD Render (4K)</span>
-                        </button>
-                        <button onclick="shareRender()" class="w-full border-2 border-teal-500 text-teal-600 font-bold py-4 px-8 rounded-2xl hover:bg-teal-50 transition-all duration-300 text-lg flex items-center justify-center space-x-3">
-                            <i class="fas fa-share-alt"></i>
-                            <span>Share 3D Render</span>
-                        </button>
-                        <button onclick="resetVisualizer()" class="w-full border-2 border-gray-300 text-gray-600 font-semibold py-4 px-8 rounded-2xl hover:bg-gray-50 transition-all duration-300 text-lg flex items-center justify-center space-x-3">
-                            <i class="fas fa-redo"></i>
-                            <span>Analyze New Plan</span>
-                        </button>
-                    </div>
-                </div>
+            <div class="nav-item" data-section="projects">
+                <i class="fas fa-images"></i>
+                <span>Projects</span>
             </div>
-        </section>
-
-        <!-- Rest of sections remain same -->
-        <section id="services" class="px-6 pb-20">
-            <h2 class="hero-font text-3xl font-bold text-gray-800 text-center mb-16">Our Services</h2>
-            <div class="space-y-6">
-                <div class="glass-effect p-8 rounded-3xl hover:shadow-2xl transition-all duration-300 border border-white/30">
-                    <div class="flex items-start space-x-4">
-                        <div class="w-12 h-12 bg-teal-500 rounded-2xl flex items-center justify-center flex-shrink-0">
-                            <i class="fas fa-drafting-compass text-white text-xl"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-bold text-gray-800 mb-2">3D Design & Planning</h3>
-                            <p class="text-gray-600 leading-relaxed">Professional 3D renderings and detailed floor plans</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Other services... -->
+            <div class="nav-item" data-section="services">
+                <i class="fas fa-cogs"></i>
+                <span>Services</span>
             </div>
-        </section>
-
-        <!-- Projects, Testimonials, Contact, Footer - Same as before -->
-        <!-- [Previous sections remain unchanged] -->
-
+            <div class="nav-item" data-section="contact">
+                <i class="fas fa-envelope"></i>
+                <span>Contact</span>
+            </div>
+        </nav>
     </div>
 
     <script>
-        // AI Visualizer - EXACT PLAN TO RENDER
-        let uploadedImage = null;
-        let renderCanvas = null;
-        let renderCtx = null;
-        let isProcessing = false;
+        // Smooth scrolling and section visibility
+        const sections = document.querySelectorAll('.section');
+        const navItems = document.querySelectorAll('.nav-item');
+        let currentSection = 'hero';
 
-        // Initialize render canvas
-        function initRenderCanvas() {
-            const canvasElement = document.getElementById('renderCanvas');
-            renderCanvas = canvasElement;
-            renderCtx = renderCanvas.getContext('2d');
-            renderCanvas.width = renderCanvas.offsetWidth * 2; // High DPI
-            renderCanvas.height = renderCanvas.offsetHeight * 2;
-        }
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '-50px 0px -20% 0px'
+        };
 
-        // PERFECT PLAN ENHANCEMENT - Uses uploaded image directly
-        function createPerfectRender(originalImage) {
-            const ctx = renderCtx;
-            const width = renderCanvas.width;
-            const height = renderCanvas.height;
-
-            // Clear canvas
-            ctx.clearRect(0, 0, width, height);
-
-            // Step 1: Base image (uploaded plan) with enhancement
-            ctx.save();
-            ctx.filter = 'brightness(1.1) contrast(1.2) saturate(1.1)';
-            ctx.drawImage(originalImage, 0, 0, width, height);
-            ctx.restore();
-
-            // Step 2: Add 3D perspective transform
-            addPerspectiveEffect(ctx, originalImage);
-
-            // Step 3: Add realistic interior elements OVER the plan
-            addInteriorElements(ctx);
-
-            // Step 4: Professional lighting & shadows
-            addLightingEffects(ctx);
-
-            // Step 5: AI Enhancement overlay
-            addAIEnhancement(ctx);
-        }
-
-        // Add 3D perspective to make it look rendered
-        function addPerspectiveEffect(ctx, originalImage) {
-            const width = renderCanvas.width;
-            const height = renderCanvas.height;
-
-            // Create perspective gradient
-            const gradient = ctx.createLinearGradient(0, 0, width, height);
-            gradient.addColorStop(0, 'rgba(255,255,255,0.3)');
-            gradient.addColorStop(0.5, 'rgba(255,255,255,0.1)');
-            gradient.addColorStop(1, 'rgba(0,0,0,0.1)');
-
-            ctx.fillStyle = gradient;
-            ctx.fillRect(0, 0, width, height);
-
-            // Add depth shadow
-            ctx.fillStyle = 'rgba(0,0,0,0.15)';
-            ctx.fillRect(width * 0.1, height * 0.7, width * 0.8, height * 0.3);
-        }
-
-        // Add furniture shadows & highlights that match plan
-        function addInteriorElements(ctx) {
-            const width = renderCanvas.width;
-            const height = renderCanvas.height;
-
-            // Subtle furniture shadows (positioned generically)
-            ctx.shadowColor = 'rgba(0,0,0,0.3)';
-            ctx.shadowBlur = 20;
-            ctx.shadowOffsetX = 5;
-            ctx.shadowOffsetY = 5;
-
-            // Sofa shadow
-            ctx.fillStyle = 'rgba(0,0,0,0.2)';
-            ctx.fillRect(width * 0.15, height * 0.75, width * 0.25, height * 0.08);
-
-            // Table shadow  
-            ctx.fillRect(width * 0.45, height * 0.72, width * 0.15, height * 0.06);
-
-            ctx.shadowBlur = 0;
-            ctx.shadowOffsetX = 0;
-            ctx.shadowOffsetY = 0;
-        }
-
-        // Professional lighting
-        function addLightingEffects(ctx) {
-            const width = renderCanvas.width;
-            const height = renderCanvas.height;
-
-            // Window light
-            const lightGradient = ctx.createRadialGradient(width * 0.8, height * 0.2, 0, width * 0.8, height * 0.2, width * 0.3);
-            lightGradient.addColorStop(0, 'rgba(255,255,255,0.6)');
-            lightGradient.addColorStop(0.7, 'rgba(255,255,255,0.1)');
-            lightGradient.addColorStop(1, 'rgba(255,255,255,0)');
-            ctx.fillStyle = lightGradient;
-            ctx.fillRect(0, 0, width, height);
-        }
-
-        // AI Enhancement glow
-        function addAIEnhancement(ctx) {
-            const width = renderCanvas.width;
-            const height = renderCanvas.height;
-
-            // Magic AI glow
-            ctx.shadowColor = '#34d399';
-            ctx.shadowBlur = 30;
-            
-            ctx.strokeStyle = 'rgba(52, 211, 153, 0.6)';
-            ctx.lineWidth = 4;
-            ctx.strokeRect(20, 20, width - 40, height - 40);
-            
-            ctx.shadowBlur = 0;
-        }
-
-        // File processing
-        const uploadZone = document.getElementById('uploadZone');
-        const fileInput = document.getElementById('fileInput');
-        const originalPreview = document.getElementById('originalPreview');
-        const progressBar = document.getElementById('progressBar');
-
-        uploadZone.addEventListener('dragover', (e) => {
-            e.preventDefault();
-            uploadZone.classList.add('dragover');
-        });
-
-        uploadZone.addEventListener('dragleave', () => {
-            uploadZone.classList.remove('dragover');
-        });
-
-        uploadZone.addEventListener('drop', (e) => {
-            e.preventDefault();
-            uploadZone.classList.remove('dragover');
-            const files = e.dataTransfer.files;
-            if (files.length > 0) {
-                processFile(files[0]);
-            }
-        });
-
-        fileInput.addEventListener('change', (e) => {
-            if (e.target.files.length > 0) {
-                processFile(e.target.files[0]);
-            }
-        });
-
-        async function processFile(file) {
-            if (isProcessing) return;
-            
-            if (file.size > 10 * 1024 * 1024) {
-                alert('❌ File size must be less than 10MB');
-                return;
-            }
-
-            isProcessing = true;
-            uploadZone.style.display = 'none';
-            document.getElementById('processingState').classList.remove('hidden');
-
-            // Show original preview
-            const reader = new FileReader();
-            reader.onload = (e) => {
-                originalPreview.src = e.target.result;
-                uploadedImage = new Image();
-                uploadedImage.onload = () => {
-                    // Preload for render
-                };
-                uploadedImage.src = e.target.result;
-            };
-            reader.readAsDataURL(file);
-
-            // Simulate AI Processing with realistic steps
-            const progressSteps = [20, 45, 70, 92, 100];
-            let step = 0;
-
-            const processInterval = setInterval(() => {
-                if (step < progressSteps.length) {
-                    progressBar.style.width = progressSteps[step] + '%';
-                    step++;
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
                 }
-                if (step >= progressSteps.length) {
-                    clearInterval(processInterval);
-                    finalizeRender();
-                }
-            }, 600);
+            });
+        }, observerOptions);
 
-            // Generate realistic stats
-            const sqft = Math.floor(Math.random() * 1500) + 1500;
-            const rooms = Math.floor(Math.random() * 3) + 2;
-            document.getElementById('renderSqft').textContent = sqft;
-            document.getElementById('renderLayout').textContent = `${rooms}BHK`;
-            document.getElementById('roomCount').textContent = rooms;
-        }
+        sections.forEach(section => {
+            observer.observe(section);
+        });
 
-        function finalizeRender() {
-            setTimeout(() => {
-                document.getElementById('processingState').classList.add('hidden');
-                document.getElementById('resultState').classList.remove('hidden');
+        // Navigation functionality
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const targetSection = item.dataset.section;
+                scrollToSection(targetSection);
                 
-                initRenderCanvas();
-                if (uploadedImage) {
-                    createPerfectRender(uploadedImage);
-                }
-            }, 500);
-        }
-
-        // Download PERFECT RENDER
-        function downloadRender() {
-            if (!renderCanvas) return;
-            
-            const link = document.createElement('a');
-            link.download = `dwarrek-perfect-render-${Date.now()}.png`;
-            link.href = renderCanvas.toDataURL('image/png', 1.0); // High quality
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            
-            showToast('✅ Perfect 4K render downloaded! 📸');
-        }
-
-        function shareRender() {
-            if (navigator.share) {
-                navigator.share({
-                    title: 'My Perfect 3D Interior Render - Dwarrek Design',
-                    text: 'Check out my exact plan-to-render conversion!',
-                    files: [new File([renderCanvas.toDataURL('image/png')], 'render.png', { type: 'image/png' })]
-                }).catch(() => {
-                    // Fallback
-                    showToast('📱 Copy link or download to share');
-                });
-            } else {
-                showToast('📱 Download & share manually');
-            }
-        }
-
-        function resetVisualizer() {
-            document.getElementById('resultState').classList.add('hidden');
-            document.getElementById('uploadZone').style.display = 'block';
-            document.getElementById('processingState').classList.add('hidden');
-            uploadZone.classList.remove('dragover');
-            isProcessing = false;
-            uploadedImage = null;
-            progressBar.style.width = '0%';
-        }
-
-        function showToast(message) {
-            const toast = document.createElement('div');
-            toast.className = 'fixed top-20 left-1/2 transform -translate-x-1/2 bg-teal-500 text-white px-6 py-4 rounded-2xl shadow-2xl z-50 font-semibold text-sm';
-            toast.innerHTML = `${message} <i class="fas fa-check ml-2"></i>`;
-            document.body.appendChild(toast);
-            
-            setTimeout(() => toast.remove(), 3000);
-        }
-
-        // Smooth scrolling & other scripts remain same
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                // Update active nav item
+                navItems.forEach(nav => nav.classList.remove('active'));
+                item.classList.add('active');
             });
         });
 
-        window.addEventListener('scroll', () => {
-            const nav = document.querySelector('nav');
-            if (window.scrollY > 100) {
-                nav.style.background = 'rgba(255, 255, 255, 0.95)';
-            } else {
-                nav.style.background = 'rgba(255, 255, 255, 0.1)';
-            }
-        });
-    </script>
-
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'ivory': '#fefaf3',
-                        'teal-muted': '#a7d8d8', 
-                        'brown-light': '#d2b48c',
-                        'teal': { 500: '#0f766e', 600: '#065f46' },
-                        'brown': { 500: '#92400e', 600: '#78350f' }
-                    }
-                }
+        function scrollToSection(sectionId) {
+            const targetSection = document.getElementById(sectionId);
+            if (targetSection) {
+                targetSection.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                });
             }
         }
+
+        // Form submission
+        document.querySelector('.contact-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you! Your message has been sent. We will get back to you soon.');
+            e.target.reset();
+        });
+
+        // Auto-hide nav when scrolling
+        let lastScrollY = window.scrollY;
+        window.addEventListener('scroll', () => {
+            const currentScrollY = window.scrollY;
+            
+            // Update active nav item based on scroll position
+            sections.forEach((section, index) => {
+                const rect = section.getBoundingClientRect();
+                if (rect.top < 100 && rect.bottom > 100) {
+                    navItems.forEach(nav => nav.classList.remove('active'));
+                    navItems[index + 1]?.classList.add('active');
+                }
+            });
+        });
     </script>
 </body>
 </html>
